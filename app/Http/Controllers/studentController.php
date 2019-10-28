@@ -8,7 +8,7 @@ use App\Student;
 class studentController extends Controller
 {
 	public function create(){
-		return view('Amos/student');
+		return view('Amos.student');
 	}
 
 	public function store(){

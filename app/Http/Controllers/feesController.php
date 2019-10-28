@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class feesController extends Controller
 {
 	public function create(){
-		return view('Amos/fees');
+		return view('Amos.fees');
 	}
 
 	public function store(){
@@ -70,6 +70,11 @@ class feesController extends Controller
         $search = $request->input('search');
  
         $fees = Fee::where('student_no', 'like', "$search%")->get();
+
+       $total = 0;
+		foreach ($fees as $fee) {
+			$total = $total + $fee->amount;
+		}
  
         return view('Amos.searchresult')->with('fees', $fees);
     }
